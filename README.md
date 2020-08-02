@@ -26,6 +26,8 @@ Install the git packages. You can find that above of this READ.me file. Just pre
 The third and final step is to create a shortcut to the .exe file (**Please note, you cannot move the original TPLink Desktop Interface.exe as the program will not function**)
 Once you create a shortcut of the file by right clicking and creating a new shortcut, you can move the shortcut anywhere on your PC to run it!
 
+(Note: On some devices, windows may block the program from running as it is not an official / certified application. If you would like to run the program, you would have to select "more information" and then "run anyways")
+
 ## Congradulations! You can now control your TP-Link smart devices from your PC! Thats one less problem you now have to deal with!
 Please note, this is a very early release and there are still a lot of compatibility issues and things to work on. If you encounter any errors with your download, please create an issue, as any information could possibly help the program improve. Thanks!
 
