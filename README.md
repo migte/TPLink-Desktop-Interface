@@ -28,3 +28,11 @@ Once you create a shortcut of the file by right clicking and creating a new shor
 
 ## Congradulations! You can now control your TP-Link smart devices from your PC! Thats one less problem you now have to deal with!
 Please note, this is a very early release and there are still a lot of compatibility issues and things to work on. If you encounter any errors with your download, please create an issue, as any information could possibly help the program improve. Thanks!
+
+
+### Future update plans:
+- [ ] Add full supporte for HS210 devices
+- [ ] Add a fix to the lack of resource when attempting to change the status of multiple devices too quickly.
+- [ ] Convert from an html interface to an Electron (desktop app) style interface.
+- [ ] Add support for more devices (will have to look into how certain devices display their data)
+
