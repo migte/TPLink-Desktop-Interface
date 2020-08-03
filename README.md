@@ -37,4 +37,4 @@ Please note, this is a very early release and there are still a lot of compatibi
 - [ ] Add a fix to the lack of resource when attempting to change the status of multiple devices too quickly.
 - [ ] Convert from an html interface to an Electron (desktop app) style interface.
 - [ ] Add support for more devices (will have to look into how certain devices display their data)
-
+- [ ] Add the ability to disable or enable the LED status light on power switches
