@@ -188,8 +188,9 @@ function SetupDevices() {
                         let dataString = String(data.model);
                         
                         let modelName = dataString.split("(");
-                        console.log(data)
+
                         // Determine what to do with recieved data based on supported device type
+                        console.log(modelName[0])
                         // If devices are smart switches or smart plugs
                         if (modelName[0] == "HS100" || modelName[0] == "HS105" || modelName[0] == "HS110" || modelName[0] == "HS200" || modelName[0] == "KP100") {
                             let state = data.relay_state;
