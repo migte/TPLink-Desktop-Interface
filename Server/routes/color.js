@@ -77,7 +77,7 @@ router.post('/', function(req, res) {
                 let modelName = modelNameRaw.split("(");
                 let d = new TPLSmartDevice(ip);
                 // If color changing (compatible) device
-                if (modelName[0] == "LB130") {
+                if (modelName[0] == "LB130" || modelName[0] == "LB230") {
                     d.power(true, 100, { hue: HSLValue.h, saturation: HSLValue.s, color_temp: 0, brightness: 100});
                 };
             };
@@ -94,7 +94,7 @@ router.post('/', function(req, res) {
             let d = new TPLSmartDevice(ip);
 
             // If color changing (compatible) device
-            if (modelName[0] == "LB130"){
+            if (modelName[0] == "LB130" || modelName[0] == "LB230"){
                 d.power(true, 100, { hue: HSLValue.h, saturation: HSLValue.s, color_temp: 0, brightness: 100});
             }; 
         };
