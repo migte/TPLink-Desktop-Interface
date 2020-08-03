@@ -10,15 +10,18 @@ Using a package created by the user named Konsumer (https://www.npmjs.com/packag
 ## What devices are supported?
 As of now, the list of currently supported devices include:
 
+
+* LB130
+* HS100
+* HS200
+
+(Being worked on)
 * LB100 (experimental) 
 * LB120 (experimental) 
-* LB130
 * LB200 (experimental) 
 * LB230 (experimental) 
 * KL110 (experimental) 
 * KL130 (experimental) 
-* HS100
-* HS200
 * HS210 (experimental)
 
 **If your devices is marked as "expermiental" and it either works or does not work, I would love your help to make them compatible with my interface, as it is just a few simple steps I cannot replicate since I do not personally have the devices. Feel free to contact me in the case that is so :)
