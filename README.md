@@ -15,7 +15,7 @@ As of now, the list of currently supported devices include:
 * HS100
 * HS200
 
-(Being worked on)
+
 * LB100 (experimental) 
 * LB120 (experimental) 
 * LB200 (experimental) 
