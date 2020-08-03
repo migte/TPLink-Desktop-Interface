@@ -183,16 +183,13 @@ function SetupDevices() {
                     
                     // On success
                     success: function(data) {
-
                         // Ensured stringified data
                         let dataString = String(data.model);
                         
                         let modelName = dataString.split("(");
 
                         // Determine what to do with recieved data based on supported device type
-                        console.log(modelName[0])
-                        // If devices are smart switches or smart plugs
-                        if (modelName[0] == "HS100" || modelName[0] == "HS105" || modelName[0] == "HS110" || modelName[0] == "HS200" || modelName[0] == "KP100") {
+                        if (modelName[0] == "HS100" || modelName[0] == "HS200" || modelName[0] == "HS210") {
                             let state = data.relay_state;
                             childNumber = "devicelistStatusID" + String(i);
                             childItem = document.getElementById(childNumber);
@@ -211,67 +208,8 @@ function SetupDevices() {
                                 document.getElementById("device" + i + i).dataset.powerState = 'On';
                             }
                         }
-                        // if device is a smart light with only power customization
-                        else if (modelName[0] == "KL110") {
-                            let state = data.on_off;
-
-                            childNumber = "devicelistStatusID" + String(i);
-                            childItem = document.getElementById(childNumber);
-                            // If off
-                            if (state == 0) {
-                                childItem.style.border = "5px solid red";
-                                childItem.style.background = "black";
-                                document.getElementById("device" + i + i).dataset.powerState = "Off";
-                            } 
-                            // If on
-                            else if (state == 1) {   
-                                // set light status
-                                childItem.style.border = "5px solid green";
-                                document.getElementById("device" + i + i).dataset.powerState = "On";
-                                childItem.style.background = "white"; 
-                            };
-                        }
-                        // if devices are smart lights with power and temperature customizability
-                        else if (modelName[0] == "LB100" || modelName[0] == "LB120" || modelName[0] == "LB200" || modelName[0] == "KL130") {
-                            let state = data.on_off;
-                            let color_temp = data.color_temp;
-
-                            childNumber = "devicelistStatusID" + String(i);
-                            childItem = document.getElementById(childNumber);
-
-                            // If off
-                            if (state == 0) {
-                                childItem.style.border = "5px solid red";
-                                childItem.style.background = "black";
-                                document.getElementById("device" + i + i).dataset.powerState = "Off";
-                            } 
-                            // If on
-                            else if (state == 1) {
-                                
-                                 // set temperature color
-                                childItem.style.border = "5px solid green";
-                                document.getElementById("device" + i + i).dataset.powerState = "On";
-                                if (color_temp >= 2500 && color_temp <= 3000) {
-                                    rgb = "rgb(255, 191, 122)"
-                                } else if (color_temp >= 3001 && color_temp <= 3500) {
-                                    rgb = "rgb(255, 203, 148)"
-                                } else if (color_temp >= 3501 && color_temp <= 5000) {
-                                    rgb = "rgb(255, 243, 230)"
-                                } else if (color_temp >= 5001 && color_temp <= 6000) {
-                                    rgb = "rgb(242, 247, 255)"
-                                } else if (color_temp >= 6001 && color_temp <= 6000) {
-                                    rgb = "rgb(232, 240, 252)"
-                                } else if (color_temp >= 6001) {
-                                    rgb = "rgb(186, 214, 255)"
-                                } else {
-                                    rgb = "rgb(255,255,255)"
-                                }
-                                childItem.style.background = rgb;
-                                
-                            };
-                        }
-                        // If device is a color changing supported device
-                        else  if (modelName[0] == "LB130" || modelName[0] == "LB230") {
+                        // Assuming device is a color changing light bulb. Should probably change this to prevent compatibility issues
+                        else {
                             let state = data.on_off;
                             let color = data.hue;
                             let lightness = data.brightness / 2;

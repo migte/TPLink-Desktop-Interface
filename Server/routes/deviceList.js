@@ -27,8 +27,8 @@ router.post('/:deviceStatus', (req, res, next) => {
         .then(info => {
             let name = String(info.model);
             let nameVal = name.split("(")
-            // supported light bulbs (assumed, I don't have all of them so I wouldn't know how the data is recieved)
-            if (nameVal[0] == "LB100" || nameVal[0] == "LB120" || nameVal[0] == "LB130" || nameVal[0] == "LB200" || nameVal[0] == "LB230" || nameVal[0] == "KL110" || nameVal[0] == "KL130") {
+            // supported color changing devices (should probably add support for temperature only bulbs when temperature slider is added)
+            if (nameVal[0] == "LB130" || nameVal[0] == "LB230") {
                 res.send(info.light_state);
             } else {
                 res.send(info);
