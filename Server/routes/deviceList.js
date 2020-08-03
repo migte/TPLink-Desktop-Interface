@@ -29,9 +29,9 @@ router.post('/:deviceStatus', (req, res, next) => {
             let nameVal = name.split("(")
             // supported light bulbs (assumed, I don't have all of them so I wouldn't know how the data is recieved)
             if (nameVal[0] == "LB100" || nameVal[0] == "LB120" || nameVal[0] == "LB130" || nameVal[0] == "LB200" || nameVal[0] == "LB230" || nameVal[0] == "KL110" || nameVal[0] == "KL130") {
-                res.send(info.light_state);
+                res.send("test");
             } else {
-                res.send(info);
+                res.send("test");
             }
 
         })
