@@ -31,7 +31,7 @@ router.post('/:deviceStatus', (req, res, next) => {
             // 
             // nameVal[0] == "LB100" || nameVal[0] == "LB120" || nameVal[0] == "LB130" || nameVal[0] == "LB200" || nameVal[0] == "LB230" || nameVal[0] == "KL110" || nameVal[0] == "KL130"
             if (nameVal[0] == "LB130" || nameVal[0] == "LB230") {
-                res.send(info.light_state);
+                res.send(info);
             } else {
                 res.send(info);
             }
