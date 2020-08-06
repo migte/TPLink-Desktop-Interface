@@ -26,6 +26,9 @@ As of now, the list of currently supported devices include:
 
 **If your devices is marked as "expermiental" and it either works or does not work, I would love your help to make them compatible with my interface, as it is just a few simple steps I cannot replicate since I do not personally have the devices. Feel free to contact me in the case that is so :)
 
+## Supported browsers
+Until I migrate into an electron app, you will be able to open the application in your default browser, or the browser of your choice. As of now, the only browsers I have tested this with include Chrome, The New Microsoft Edge (old one doesn't work), and firefox.
+If you are experiencing issues with your browser, and would like to try another one, you can enter the directory "interface" and open "index.html" with the browser of your choice, aslong as you leave the console (command prompt) running.
 # Features
 _(todo: pretty up this area on GUI overhaul)_
 
