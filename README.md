@@ -15,7 +15,7 @@ As of now, the list of currently supported devices include:
 * HS100
 * HS200
 
-(Being worked on)
+
 * LB100 (experimental) 
 * LB120 (experimental) 
 * LB200 (experimental) 
@@ -44,7 +44,7 @@ Please note, this is a very early release and there are still a lot of compatibi
 
 
 ### Future update plans:
-- [ ] Add full supporte for HS210 devices
+- [ ] Add full support for HS210 devices
 - [ ] Add a fix to the lack of resource when attempting to change the status of multiple devices too quickly.
 - [ ] Convert from an html interface to an Electron (desktop app) style interface.
 - [ ] Add support for more devices (will have to look into how certain devices display their data)
