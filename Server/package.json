@@ -23,6 +23,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "open": "^7.1.0",
-    "tplink-lightbulb": "^1.5.2"
+    "tplink-lightbulb": "^1.5.3"
   }
 }
