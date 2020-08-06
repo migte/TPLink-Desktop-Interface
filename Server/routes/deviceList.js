@@ -21,7 +21,6 @@ router.post('/:deviceStatus', (req, res, next) => {
         let ip = (req.body.ip);
         let device = new TPLSmartDevice(ip);
         let state = null
-
         device.info()
         .catch(e=> console.error(e))
         .then(info => {

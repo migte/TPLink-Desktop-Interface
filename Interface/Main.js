@@ -10,8 +10,6 @@ var devices = [];
 var currentlySelectedDevicesRaw = [];
 var currentlySelectedDevices = [];
 var isChecked = false;
-
-
 // On load, call load and setup
 window.addEventListener("load", LoadAndSetup);
 
@@ -73,12 +71,13 @@ function LoadDevices() {
         success: function(data) {
             // For each device on data delivery
             $.each(data, function(i, data) {
-
                 // Assure data is stingified
                 let str = String(data);
                 
                 // Set data values
                 let deviceNameForData = String(str.split(" - ")[1]);
+
+                
                 let deviceIP = str.split(" - ")[0];
 
                 // Store device and delete any duplicates
@@ -112,6 +111,13 @@ function LoadDevices() {
                 let spanStatus = document.createElement("span");
                 spanStatus.className = "devicelistStatus";
                 spanStatus.id = "devicelistStatusID" + String(i);
+                spanStatus.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                label.append(spanStatus)
+
+                // Led status status
+                spanStatus = document.createElement("span");
+                spanStatus.className = "ledListStatus";
+                spanStatus.id = "ledListStatusID" + String(i);
                 spanStatus.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
                 label.append(spanStatus)
                 
@@ -163,18 +169,16 @@ function SetupDevices() {
             if (devices.length == 0) {
                 
             } else {
-
             }
+            
             // Take the amount of devices + the data inside of them
             for (let i = 0; i < devices.length; i++) {
                 let IPBefore = String(devices[i]);
                 let IPSplit = IPBefore.split(' - ');
-
-                // IP object
+                // IP object                
                 IP = {
-                    ip: IPSplit[0]
+                    ip: IPSplit[0],
                 }
-
                 // Requset to server
                 $.ajax({
                     type: "POST",
@@ -185,28 +189,53 @@ function SetupDevices() {
                     success: function(data) {
                         // Ensured stringified data
                         let dataString = String(data.model);
+                        let dataName = String(data.alias)
                         
                         let modelName = dataString.split("(");
 
                         // Smart switches and plugs
-                        if (modelName[0] == "HS100" || modelName[0] == "HS105" || modelName[0] == "HS110" || modelName[0] == "HS200") {
+                        if (modelName[0] == "HS100" || modelName[0] == "HS105" || modelName[0] == "HS110" || modelName[0] == "HS200" || modelName[0] == "HS210") {
                             let state = data.relay_state;
+                            let ledState = data.led_off;
                             childNumber = "devicelistStatusID" + String(i);
+                            childNumber2 = "ledListStatusID" + String(i);
                             childItem = document.getElementById(childNumber);
+                            childitem2 = document.getElementById(childNumber2);
 
-
-                            // If off
+                      
+                            // If power off
                             if (state == 0) {
                                 childItem.style.border = "5px solid red";
                                 childItem.style.background = "black";
                                 document.getElementById("device" + i + i).dataset.powerState = "Off";
+                                // if led on
+                                if (ledState == 0) {
+                                    document.getElementById("device" + i + i).dataset.ledState = "On";
+                                    childitem2.style.background = "rgb(104, 255, 112)";
+                                }
+                                // If led off
+                                else if (ledState == 1) {
+                                    document.getElementById("device" + i + i).dataset.ledState = 'Off';
+                                    childitem2.style.background = "rgb(83, 83, 83)"
+                                }
                             }
-                            // If on
-                            else if (state == 1) {
-                                childItem.style.border = "5px solid green";
-                                childItem.style.background = "white";
-                                document.getElementById("device" + i + i).dataset.powerState = 'On';
+                                // If power on
+                                else if (state == 1) {
+                                    childItem.style.border = "5px solid green";
+                                    childItem.style.background = "white";
+                                    document.getElementById("device" + i + i).dataset.powerState = 'On';
+                                    // if led on
+                                if (ledState == 0) {
+                                    document.getElementById("device" + i + i).dataset.ledState = "On";
+                                    childitem2.style.background = "rgb(104, 255, 112)"
+                                }
+                                // If led off
+                                else if (ledState == 1) {
+                                    document.getElementById("device" + i + i).dataset.ledState = 'Off';
+                                    childitem2.style.background = "rgb(83, 83, 83)"
+                                }
                             }
+                            
                         }
                         // Color Changing lightbulbs
                         else if (modelName[0] == "LB130" || modelName[0] == "LB230") {
@@ -273,7 +302,7 @@ function SetupDevices() {
                             } 
                             // If on
                             else if (state == 1) {
-                               
+                            
                             // If color is in temperature
                                 childItem.style.border = "5px solid green";
                                 document.getElementById("device" + i + i).dataset.powerState = "On";
@@ -310,7 +339,7 @@ function SetupDevices() {
                             } 
                             // If on
                             else if (state == 1) {
-                               
+                            
                             // If color is in temperature
                                 childItem.style.border = "5px solid green";
                                 document.getElementById("device" + i + i).dataset.powerState = "On";
@@ -318,10 +347,11 @@ function SetupDevices() {
                                 childItem.style.background = rgb;
                             };
                         };
+                        
                     }
                 });
             };
-        }, 100);
+        }, 200);
     } else {
         SetupDevices;
     };
@@ -361,6 +391,12 @@ function deviceSelectionUpdate(thisVar) {
         document.getElementById("powerSwitch").checked = true;
     } else if (currentState.dataset.powerState == "Off") {
         document.getElementById("powerSwitch").checked = false;
+    };
+
+    if (currentState.dataset.ledState == "On") {
+        document.getElementById("ledSwitch").checked = true;
+    } else if (currentState.dataset.ledState == "Off") {
+        document.getElementById("ledSwitch").checked = false;
     };
     
     // Push values up to array
@@ -408,6 +444,7 @@ function powerUpdate() {
     // grab our switch
     document.getElementById("powerSwitch").disabled = true;
 
+
     // Set wait length to prevent failure on lack of resource. Grows depending on amount of devices selected
     let waitLength = currentlySelectedDevices.length * 500 + 3000;
 
@@ -441,6 +478,60 @@ function powerUpdate() {
         $.ajax({
             type: "POST",
             url: "http://localhost:3000/power",
+            data: {devices: deliveryCurrentlySelectedDevices, powerSetting: "powerOff"},
+
+            // On success
+            success: function(data) {
+                PausedStatusLoad = false;
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // no error handling
+            }
+        });
+    });
+};
+
+function ledUpdate() {
+    // pause status load
+    PausedStatusLoad = true
+
+    // grab our switch
+    document.getElementById("ledSwitch").disabled = true;
+
+
+    // Set wait length to prevent failure on lack of resource. Grows depending on amount of devices selected
+    let waitLength = currentlySelectedDevices.length * 400 + 2000;
+
+    // Disable switch
+    setTimeout(() => {
+        document.getElementById("ledSwitch").disabled = false;
+    }, waitLength);
+
+    let deliveryCurrentlySelectedDevices = currentlySelectedDevices;
+
+    // If power is switched on
+    $("input:checkbox[name=ledSwitch]:checked").each(function() {
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/power/ledState",
+            data: {devices: deliveryCurrentlySelectedDevices, powerSetting: "powerOn"},
+
+            // On success
+            success: function(data) {
+                PausedStatusLoad = false;
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // no error handling
+            }
+        });
+    });
+    // If power is swithced off
+    $("input:checkbox[name=ledSwitch]:not(:checked)").each(function() {
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/power/ledState",
             data: {devices: deliveryCurrentlySelectedDevices, powerSetting: "powerOff"},
 
             // On success

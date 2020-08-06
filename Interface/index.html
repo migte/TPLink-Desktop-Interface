@@ -26,14 +26,21 @@
         </div>
         <!--Power Switch-->
         <div id="PowerSettings">
+            <label id="powerTitle">Power</label><br>
             <label class="switch">
                 <input type="checkbox" id="powerSwitch" name="powerSwitch" onClick="powerUpdate()">
                 <span class="slider round"></span>
+            </label> <br><br><br>
+            <label id="power2Title">LED Status</label><br>
+            <label class="switch2">
+                <input type="checkbox" id="ledSwitch" name="ledSwitch" onClick="ledUpdate()">
+                <span class="slider2 round"></span>
             </label>
         </div>
         <br>
         <!--Color Picker Box-->
         <div id="ColorSettings">
+            <label id="colorTitle">Light Color</label><br>
             <input type="hidden" value="#0088cc" name="color0" id="c0">
             <script>
                 $('#c0').minicolors({ inline: true, control: 'wheel', animationSpeed: 100 , changeDelay: 50});

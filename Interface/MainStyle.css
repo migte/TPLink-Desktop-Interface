@@ -63,9 +63,16 @@ li {
     width: 10px;
     background-color: black;
     border: 5px solid red;
-    margin-right: 40px;
+    margin-right: 15px;
     margin-left: 15px;
 }
+.ledListStatus {
+    background-color: rgb(83, 83, 83);
+    margin-right: 15px;
+    font-size: 13px;
+    padding-left: 0px;
+}
+
 
 .container {
     display: block;
@@ -135,22 +142,42 @@ li {
 }
 
 #ColorSettings {
-    text-align: center;
-    justify-self: center;
+    text-align: left;
+    justify-self: left;
     height: 50%;
     width: 70%;
+    padding-top: 100px;
+    padding-left: 260px;
     grid-row: row2;
     grid-column: col2;
 
 }
-
+#colorTitle {
+    text-align: center;
+    justify-self: center;
+    font-size: 30px;
+    padding-left: 18px;
+    grid-row: row2;
+    grid-column: col2;
+}
 /* Power Switch Settngs */
+#powerTitle {
+    grid-row: row1;
+    grid-column: col2;
+    font-size: 70px;
+}
+#power2Title {
+    grid-row: row1;
+    grid-column: col2;
+    font-size: 30px;
+}
 #PowerSettings {
     grid-row: row1;
     text-align: center;
-    justify-self: center;
-    height: 50%;
-    width: 25%;
+    justify-self: left;
+    padding-left: 150px;
+    height: 100%;
+    width: 30%;
     grid-column: col2;
 
 }
@@ -158,13 +185,25 @@ li {
 .switch {
     position: relative;
     display: inline-block;
-    width: 100%;
-    height: 100%;
-    top: 100px;
-    min-width: 300px;
+    text-align: center;
+    width: 350px;
+    height: 200px;
 }
   
 .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch2 {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 30%;
+}
+  
+.switch2 input { 
     opacity: 0;
     width: 0;
     height: 0;
@@ -215,5 +254,54 @@ input:checked + .slider:before {
 }
   
 .slider.round:before {
+    border-radius: 50%;
+}
+
+/**/
+.slider2 {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider2:before {
+    position: absolute;
+    content: "";
+    height: 90%;
+    width: 46%;
+    left: 15px;
+    bottom: 7px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider2 {
+    background-color: #2196F3;
+}
+  
+input:focus + .slider2 {
+    box-shadow: 0 0 1px #2196F3;
+}
+  
+input:checked + .slider2:before {
+    -webkit-transform: translateX(150px);
+    -ms-transform: translateX(150px);
+    transform: translateX(85%);
+}
+
+.slider2.round {
+    border-radius: 34px;
+}
+  
+.slider2.round:before {
     border-radius: 50%;
 }
