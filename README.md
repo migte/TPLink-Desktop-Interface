@@ -26,6 +26,15 @@ As of now, the list of currently supported devices include:
 
 **If your devices is marked as "expermiental" and it either works or does not work, I would love your help to make them compatible with my interface, as it is just a few simple steps I cannot replicate since I do not personally have the devices. Feel free to contact me in the case that is so :)
 
+# Features
+_(todo: pretty up this area on GUI overhaul)_
+
+* Power on and off devices
+* Enable or disable the LED indicator on select devices
+* Change the color of color changing compatible devices
+* Select all devices, or individual devices ( in other words, your can select however many devices without having to create "groups")
+
+
 # How to get started
 ### Step 1:
 The first step is to install node from https://nodejs.org/en/download/ . This is a runtime enviroment that allows javascript to be run as a backend language.
@@ -48,4 +57,3 @@ Please note, this is a very early release and there are still a lot of compatibi
 - [ ] Add a fix to the lack of resource when attempting to change the status of multiple devices too quickly.
 - [ ] Convert from an html interface to an Electron (desktop app) style interface.
 - [ ] Add support for more devices (will have to look into how certain devices display their data)
-- [ ] Add the ability to disable or enable the LED status light on power switches
