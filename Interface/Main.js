@@ -446,7 +446,7 @@ function powerUpdate() {
 
 
     // Set wait length to prevent failure on lack of resource. Grows depending on amount of devices selected
-    let waitLength = currentlySelectedDevices.length * 500 + 3000;
+    let waitLength = currentlySelectedDevices.length * 360 + 3000;
 
     // Disable switch
     setTimeout(() => {
