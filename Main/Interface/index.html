@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TP-Link Interface</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            if (typeof module == "object") {
+                window.module = module;
+                module = undefined;
+            }
+        </script>
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="interface.js"></script>
+        <script>
+            if (window.module) module = window.module;
+        </script>
+    </head>
+    <body>
+
+        <!--device prompt-->
+        <div id="devicePrompt" style="display: none">
+            <div style="position:absolute; z-index: 1000; width: 100%; height: 100%;">
+                <div class="center" style="background-color: rgb(112, 112, 112); height: 160px;">
+                    <header style="text-align:center; font-size: 30px; text-align: center; color: rgb(255, 255, 255); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Enter a new name for your device</header>
+                    <input autofocus id="newNameInput" style="width: 80%; height: 30px; font-size: 25px; display: block; margin-right: auto; margin-left: auto; margin-top: 15px;">
+                    <span>
+                        <button id="SubmitName" onClick="deviceNameChange(this)" class="boxClick" style="font-size: 30px; background-color: rgb(202, 240, 255); float: right; margin-right: 45px; margin-top: 15px;">Submit</button>
+                        <button id="CancelName" onClick="promptClose()" class="boxClick" style="font-size: 30px; background-color: rgb(255, 202, 202); float: right; margin-right: 15px; margin-top: 15px;">Cancel</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div id="mainGrid">
+            <!--Device List-->
+            <div id="devices">
+                <ul id="deviceList">
+                   <template>
+                    <li data--i-p="" data--model="" data--name="">
+                        <label class="container">
+                            <input type="checkbox" name="type" onclick="deviceSelectionUpdate(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <div class="deviceInfo">
+                            <span class="devicelistStatus"></span>
+                            <span class="ledListStatus"></span>
+                            <span class="deviceListTitle" style="font-size: 20px;"></span>
+                            <i class="fa fa-pencil" aria-hidden="true" onclick="customPrompt(this)"></i>
+                        </div>
+                    </li>
+                   </template>
+                </ul>
+            </div>
+            <div id="refresh">
+                <button id="refreshButton" onclick="refreshPage()">Refresh Devices</button>
+            </div>
+            
+              <!--Device Settings-->
+        <div id="deviceSettings">
+            <!--Navigation Bar-->
+            <div id="settingsNavBar">
+                <ul id="settingsNavList">
+                    <li class="active settingsNavItem" onclick="changeLayout('Power')"><img style="width: 100%" src="thumbnails/power.png"></li>
+                    <li class="settingsNavItem" onclick="changeLayout('Color')"><img style="width: 100%" src="thumbnails/color.png"></li>
+                  </ul>
+            </div>
+            <!--Power Settings Menu-->
+            <div class="settingsMenu" id="PowerSettingsMenu" style="display: block">
+                <p class="settingsTitle">Power</p>  
+                <label class="switch">
+                    <input type="checkbox" id="powerSwitch" name="powerSwitch" onClick="powerUpdate()">
+                    <span class="slider round"></span>
+                </label>
+                <br><br>
+                <p class="settingsTitle">LED Status</p>  
+                <label class="switch">
+                    <input type="checkbox" id="ledSwitch" name="ledSwitch" onClick="ledUpdate()">
+                    <span class="slider round"></span>
+                </label>
+                <br><br>
+            </div>
+            <!--Color Settings Menu-->
+            <div class="settingsMenu" id="ColorSettingsMenu" style="display: none">
+                <p class="settingsTitle">Color</p> <br>
+                <div class="colorSliderContainer">
+                    <input type="range" min="1" max="359" value="180" class="colorSlider" id="hueSlider" oninput="colorSliderChange()">
+                </div>
+                <br><br>
+                <p class="settingsTitle">Tempearture</p> <br>
+                <div class="colorSliderContainer">
+                    <input type="range" min="2500" max="9000" value="5700" class="temperatureSlider" id="temperatureSlider" oninput="tempSliderChange()">
+                </div>
+                <br><br>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
