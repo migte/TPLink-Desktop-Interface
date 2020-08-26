@@ -1,6 +1,8 @@
 # TPLink Desktop Interface
 Control your TP-Link smart devices from the comfort of your PC! You can finally break free from the limits of the mobile KASA app and experience full control over your Smart Lights, Smart Switches, Smart Plugs, and more!
 
+**Note: A new, significantly updated version of this interface is in development and is planned for release soon. Check every week or so so you don't miss out!**
+
 ## What is this?
 This is a small, easy to use application that allows you to control certain properties of your TP-Link smart devices from your PC. As of current development this includes turning devices on and off, and changing the color of color changing devices. Unfortunately I do not have access to all TP-Link smart devices, so there is currently only support for a select few, but as future updates come, expect further support for more models.
 
