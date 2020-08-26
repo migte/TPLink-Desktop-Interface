@@ -74,6 +74,9 @@ As of now, the list of currently supported devices include:
 **If your devices is marked as "experimental" and it either works or does not work, I would love your help to make them compatible with my interface, as it is just a few simple steps I cannot replicate since I do not personally have the devices. Feel free to contact me in the case that is so :)
 
 ### Future update plans:
+- [ ] Add audio visualizer feature
+- [ ] Ability to change brightness of a bulb
+- [ ] Ability to change the name of a bulb
 - [ ] Add full support for HS210 devices
 
 If you have any requests or suggestions, feel free to post an issue and I'll take a look at it!
