@@ -1,0 +1,428 @@
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+        -webkit-touch-callout: none; 
+    -webkit-user-select: none;
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+#mainGrid {
+    background: linear-gradient(to top, #4bff9c 0%, #4bffe7 100% );
+    height: 100%;
+    display: grid;
+    grid-template-columns: [c1] .9fr [c2] 1fr [c3] 1fr [c4] 1fr;
+    grid-template-rows: [r1] .15fr [r2] 1fr [r3] 1fr [r4] .08fr;
+    grid-template-areas:    "Devices Main Main Main"
+                            "Devices Main Main Main"
+                            "Devices Main Main Main"
+                            "Reset Main Main Main";
+}
+
+#refresh {
+    box-shadow: 10px 0px  #003523;
+    border: 3px solid black;
+    grid-area: Reset;
+    width: 100%;
+
+}
+#refreshButton{
+    cursor: pointer;
+    font-size: 30px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 253, 190);
+}
+
+#refreshButton:hover{
+    background-color: rgb(0, 204, 153);
+}
+#devices {
+    box-shadow: 10px 0px  #003523;
+    border: 3px solid black;
+    text-align: left;
+    font-size: min(max(16px, 3.8vw), 1.8vw);
+    overflow: auto;
+    width: 100%;
+    min-width: 410px;
+    grid-area: Devices;
+}
+
+
+#devices li {
+    list-style-type: none;
+}
+
+.deviceListTitle {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: min(max(16px, 3.8vw), 1.8vw);
+    line-height: 0px;
+}
+
+.devicelistStatus {
+    display: inline-block;
+    background-color: black;
+    border: .25vw solid red;
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.ledListStatus {
+    display: inline-block;
+    height: 25px;
+    width: 5px;
+    background-color: rgb(21, 255, 0);
+    border: .10vw solid black;
+    margin-right: 15px;
+}
+
+.deviceInfo {
+    margin-left: 35px;
+}
+
+.fa {
+    margin-left: 5px;
+    color: #0059ff;
+}
+
+.fa:hover {
+    text-shadow: 1px 1px #005a3f;
+}
+
+.fa:active {
+    animation: .1s clicked;
+}
+@keyframes clicked {
+    0% {transform: translate(0px, 0px)}
+    50% {transform: translate(0px, 3px)}
+    100% {transform: translate(0px, 0px)}
+}
+
+.container {
+    line-height: 30px;
+    display: block;
+    position: relative;
+    width: 50%;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: .1vw;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 2px solid black;
+  }
+  
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+  
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#deviceSettings {
+    margin-left: .8vw;
+    box-shadow: 20px 0px #003523;
+    background: linear-gradient(to top, #00df64 0%, #00b49c 100% );
+    width: 98%;
+    height: 100%;
+    grid-area: Main;
+} 
+
+#settingsNavBar {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    border-bottom: 2px solid black;
+}
+
+.settingsNavItem {
+    filter: brightness(80%);
+    height: 70px;
+    width: 80px;
+    cursor: pointer;
+    float: left;
+    display: block;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.settingsNavItem:hover:not(.active) {
+    filter: brightness(75%);
+}
+
+.settingsNavItem.active {
+    filter: brightness(100%);
+}
+
+.settingsMenu {
+    width: 100%;
+    opacity: 80%;
+    background-color: rgb(247, 247, 247);
+    box-shadow: 0px 10px 5px black;
+}
+
+.settingsTitle{
+    padding: 0px;
+    margin: 0px;
+    font-size:calc(24px + 2vw);    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.switch {
+    text-align: center;
+    position: relative;
+    display: block;
+    text-align: center;
+    object-fit: contain;
+    width: 20%;
+    height: 40%;
+    margin: 0 auto;
+    min-width: 250px;
+    min-height: 150px;
+    justify-items: center;
+
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 90%;
+    width: 46%;
+    left: 15px;
+    bottom: 7px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #2196F3;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(150px);
+    -ms-transform: translateX(150px);
+    transform: translateX(85%);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Color Sliders */
+
+.colorSliderContainer {
+    width: 100%; /* Width of the outside container */
+  }
+  
+  /* Color */
+  .colorSlider {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 350px; 
+    height: 30px; /* Specified height */
+    outline: none; /* Remove outline */
+    opacity: 1;
+    background: -moz-linear-gradient(right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -ms-linear-gradient(right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -o-linear-gradient(right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -webkit-linear-gradient(right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    box-shadow: 0px 0px 5px black;
+    margin: 0 auto;
+    display: block;
+    transition: box-shadow .1s;
+  }
+
+  .colorSlider:hover {
+    box-shadow: 0px 0px 10px black;
+  }
+  
+
+  .colorSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px; 
+    height: 30px; 
+    background: rgba(0,0,0,0); 
+    border: 5px solid black;
+    cursor: pointer; 
+  }
+  
+  .colorSlider::-moz-range-thumb {
+    width: 25px; 
+    height: 25px; 
+    background: #4CAF50;
+    cursor: pointer; 
+  }
+
+  /* Brightness */
+  .brightnessSlider {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 350px; 
+    height: 30px; /* Specified height */
+    outline: none; /* Remove outline */
+    opacity: 1;
+    background: linear-gradient(to right, #00ffff 0%, #000000 90%);
+    box-shadow: 0px 0px 5px black;
+    margin: 0 auto;
+    display: block;
+    transition: box-shadow .1s;
+  }
+  
+  .brightnessSlider:hover {
+    box-shadow: 0px 0px 10px black;
+  }
+  
+
+  .brightnessSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px; 
+    height: 30px; 
+    background: rgba(0,0,0,0); 
+    border: 5px solid black;
+    cursor: pointer; 
+  }
+  
+  .brightnessSlider::-moz-range-thumb {
+    width: 25px; 
+    height: 25px; 
+    background: #4CAF50;
+    cursor: pointer; 
+  }
+
+  /* Temp */
+  .temperatureSlider {    
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 350px; 
+    height: 30px; /* Specified height */
+    outline: none; /* Remove outline */
+    opacity: 1;
+    background: linear-gradient(to right, #ffad14 0%, #ffffff 50%, #459cff 100%);
+    box-shadow: 0px 0px 5px black;
+    margin: 0 auto;
+    display: block;
+    transition: box-shadow .1s;
+  }
+  
+  .temperatureSlider:hover {
+    box-shadow: 0px 0px 10px black;
+  }
+  
+
+  .temperatureSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px; 
+    height: 30px; 
+    background: rgba(0,0,0,0); 
+    border: 5px solid black;
+    cursor: pointer; 
+  }
+  
+  .temperatureSlider::-moz-range-thumb {
+    width: 25px; 
+    height: 25px; 
+    background: #4CAF50;
+    cursor: pointer; 
+  }
+
+.center {
+    width: 500px;
+    height: 250px;
+    position: absolute; 
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.boxClick {
+    cursor: pointer;
+}
