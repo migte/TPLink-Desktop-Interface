@@ -14,7 +14,7 @@ If you are looking to use the desktop interface, keep reading. If you would like
 download the necessary files from this link: https://drive.google.com/drive/folders/1zVkKqxQKOLUn1A8LttDPLNke7G57qUvS?usp=sharing
 
 ## Step 2:
-Extract the files anywhere you would like on your computer (it is recommended to put them in your "Program Files" folder.) After that, open the file and place the shortcut anywhere you'd like. Use the shortcut to run the app. Congratulations, you can now control your TPLink smart devices from your computer!
+Extract the files anywhere you would like on your computer (it is recommended to put them in your "Program Files" folder.) After that, open the file and create a shortcut of the "TPLink Desktop Interface.exe" and place this shortcut wherever you'd like. **Do not change the location of the original TPLink Desktop Interface.exe file, as the program will not work**
 
 # Customize This Repository
 If you would like to modify this application, feel free to fork and use this repository and go at it! To properly edit and complete your modified interface, follow these steps:
