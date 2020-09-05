@@ -1,6 +1,8 @@
 # TPLink Desktop Interface
 Control your TP-Link smart devices from the comfort of your PC! You can finally break free from the limits of the mobile KASA app and experience full control over your Smart Lights, Smart Switches, Smart Plugs, and more!
 
+**Note: A new, significantly updated version of this interface is in development and is planned for release soon. Check every week or so so you don't miss out!**
+
 ## What is this?
 This is a small, easy to use application that allows you to control certain properties of your TP-Link smart devices from your PC. As of current development this includes turning devices on and off, changing the color of a lightbulb, changing the temperature of a lightbulb, changing the LED status of a device, changing the Name of devices (not supported for light bulbs). Unfortunately, I do not have access to all TP-Link smart devices, so there is currently only support for a select few, but as future updates come, expect further support for more models.
 
@@ -71,11 +73,13 @@ As of now, the list of currently supported devices include:
 * KL130 (experimental) 
 * HS210 (experimental)
 
-**If your devices is marked as "experimental" and it either works or does not work, I would love your help to make them compatible with my interface, as it is just a few simple steps I cannot replicate since I do not personally have the devices. Feel free to contact me in the case that is so :)
+**If your devices is marked as "experimental" and it either works or does not work, I would love your help to make them compatible with my interface, as it is just a few simple steps I cannot replicate since I do not personally have the devices. Feel free to contact me in the case that is so :)**
+
 
 ### Future update plans:
 - [ ] Add audio visualizer feature
 - [ ] Ability to change brightness of a bulb
 - [ ] Add full support for HS210 devices
+
 
 If you have any requests or suggestions, feel free to post an issue and I'll take a look at it!
