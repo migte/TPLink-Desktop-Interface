@@ -2,7 +2,7 @@
 // dependencies 
 const express = require('express');
 const router = express.Router();
-const TPLSmartDevice = require('tplink-lightbulb');
+const TPLSmartDevice = require('@migte/tplink-lightbulb-modified-version');
 const { DeviceSearch } = require('../DeviceSearch');
 
 // converts hex to hsl

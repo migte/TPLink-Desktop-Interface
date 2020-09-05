@@ -3,7 +3,7 @@
 
 // dependencies
 var router = require("express")();
-const TPLSmartDevice = require('tplink-lightbulb');
+const TPLSmartDevice = require('@migte/tplink-lightbulb-modified-version');
 
 // on post request to power endpoint
 router.post('/', function(req, res) {

@@ -1,6 +1,6 @@
 // By - migte
 
-const TPLSmartDevice = require('tplink-lightbulb')
+const TPLSmartDevice = require('@migte/tplink-lightbulb-modified-version')
 
 deviceListRaw = []
 deviceList = []
