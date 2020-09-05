@@ -76,7 +76,6 @@ As of now, the list of currently supported devices include:
 ### Future update plans:
 - [ ] Add audio visualizer feature
 - [ ] Ability to change brightness of a bulb
-- [ ] Ability to change the name of a bulb
 - [ ] Add full support for HS210 devices
 
 If you have any requests or suggestions, feel free to post an issue and I'll take a look at it!
