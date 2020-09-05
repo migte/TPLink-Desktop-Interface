@@ -1,0 +1,21 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "getPackager": "npm i -g electron-packager",
+    "packageApp": "electron-packager ./ TPLink-Desktop-Interface --icon=./Interface/thumbnails/logo.ico --overwrite"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "open": "^7.2.0",
+    "@migte/tplink-lightbulb-modified-version": "^1.5.4"
+  },
+  "devDependencies": {
+    "electron": "^10.0.0"
+  }
+}
