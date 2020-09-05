@@ -13,7 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "open": "^7.2.0",
-    "tplink-lightbulb": "^1.5.3"
+    "@migte/tplink-lightbulb-modified-version": "^1.5.4"
   },
   "devDependencies": {
     "electron": "^10.0.0"
