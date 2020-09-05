@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 var search = require('../DeviceSearch');
-const TPLSmartDevice = require('tplink-lightbulb');
+const TPLSmartDevice = require('@migte/tplink-lightbulb-modified-version');
 const e = require('express');
 data = search.DeviceSearch();
 
