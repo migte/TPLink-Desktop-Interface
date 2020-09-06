@@ -62,6 +62,7 @@
                 <ul id="settingsNavList">
                     <li class="active settingsNavItem" onclick="changeLayout('Power')"><img style="width: 100%" src="thumbnails/power.png"></li>
                     <li class="settingsNavItem" onclick="changeLayout('Color')"><img style="width: 100%" src="thumbnails/color.png"></li>
+                    <li class="settingsNavItem" onclick="changeLayout('Music')"><img style="width: 100%" src="thumbnails/music.png"></li>
                   </ul>
             </div>
             <!--Power Settings Menu-->
@@ -89,6 +90,89 @@
                 <p class="settingsTitle">Tempearture</p> <br>
                 <div class="colorSliderContainer">
                     <input type="range" min="2500" max="9000" value="5700" class="temperatureSlider" id="temperatureSlider" oninput="tempSliderChange()">
+                </div>
+                <br><br>
+            </div>
+            <!--Music Settings Menu-->
+            <div class="settingsMenu" id="MusicSettingsMenu" style="display: none">
+                <p class="settingsTitle">Audio Visualizer</p> <br>
+                <p class="settingsSubTitle">Experience your music beyond your ears with a built in audio visualizer</p>
+                <br><br><br><br>
+                <div id="MusicContainerMain">
+                    <div id="URL">
+                        <input type="url" style="width: 100%; height: 100%; margin: 0px; bottom: 152px; outline: none;" placeholder="www.youtube.com/...">
+                        <div id="options1">
+                            <span style="font-size: 30px; color: rgb(97, 255, 97); cursor: pointer; margin-left: 6px; font-weight: bold;">&#9658;</span>
+                            <div style="display: inline-block;">
+                                <preset class="activePreset presetItem" style="margin-left: 25px;">
+                                    1
+                                </preset>
+                                <preset class="presetItem" style="margin-left: 10px;">
+                                    2
+                                </preset>
+                                <preset class="presetItem" style="margin-left: 10px;">
+                                    3
+                                </preset>
+                                <preset class="presetItem" style="margin-left: 10px;">
+                                    4
+                                </preset>
+                                <preset class="presetItem" style="margin-left: 10px;">
+                                    5
+                                </preset>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="presetSettings">
+                       <table style="overflow: auto;">
+
+                            <!--Sensitivity-->
+                            <li id="presetDataItem" style="font-size: 25px;">
+                                <label id="presetLabel">Sensitivity:</label>
+                                <label style="font-size: 20px; margin-left: 15px;">(recommended amount is 50) </label>
+                                <input id="sensitivityInput" style="width: 40px;" type="number" max="100" min="0">
+
+                            </li>
+
+                            <!-- Brightness Range
+                            <li id="presetDataItem" style="font-size: 25px;">
+                                <label id="presetLabel">Brightness Range:</label>
+                                <label style="font-size: 20px; margin-left: 15px;">min</label>
+                                <input id="brightnessInputMin" style="width: 40px;" type="number" max="100" min="0">
+                                <label style="font-size: 20px; margin-left: 15px;">max</label>
+                                <input id="brightnessInputMax" style="width: 40px;" type="number" max="100" min="0">
+                            </li> -->
+
+                            <!--Color 1-->
+                            <li id="presetDataItem" style="font-size: 25px;">
+                                <label id="presetLabel">Color 1:</label>
+                                <label style="font-size: 20px; margin-left: 15px;"></label>
+                                <input name="colorPicker" id="colorInput1" style="width: 40px;" type="color" value="#87ffc5">
+                            </li>
+
+                            <!--Color 2-->
+                            <li id="presetDataItem" style="font-size: 25px;">
+                                <label id="presetLabel" >Color 2:</label>
+                                <label style="font-size: 20px; margin-left: 15px;"></label>
+                                <input name="colorPicker" name="colorPicker" id="colorInput2" style="width: 40px;" type="color" value="#87ffc5">
+                            </li>
+
+                            <!--Color 3-->
+                            <li id="presetDataItem" style="font-size: 25px;">
+                                <label id="presetLabel" >Color 3:</label>
+                                <label style="font-size: 20px; margin-left: 15px;"></label>
+                                <input name="colorPicker" id="colorInput3" style="width: 40px;" type="color" value="#87ffc5" style="border: none;">
+                            </li>
+
+                            <!--Disco Mode-->
+                            <li id="presetDataItem" style="font-size: 25px;">
+                                <label id="presetLabel" >Disco Mode:</label>
+                                <label class="container" style="display: inline-block; margin-bottom: 25px;">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                        </table>
+                    </div>
                 </div>
                 <br><br>
             </div>

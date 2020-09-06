@@ -524,6 +524,8 @@ function changeLayout(selected) {
         case "Color":
             presentChange("ColorSettingsMenu");
             break
+        case "Music":
+            presentChange("MusicSettingsMenu");
     }
 
 }

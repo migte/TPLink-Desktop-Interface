@@ -20,8 +20,8 @@ function createWindow () {
     y: 600,
     center: true,
     icon: image,
-    minHeight: 645,
-    minWidth: 805,
+    minHeight: 650,
+    minWidth: 950,
     webPreferences: {
       nodeIntegration: true
     },
