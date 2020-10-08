@@ -148,7 +148,7 @@ router.post('/:temp', (req, res, next) => {
         }; 
     };
 };
-res.send(req.body);
+res.send("success");
 });
 
 module.exports = router;
