@@ -99,7 +99,7 @@ router.post('/', function(req, res) {
             }; 
         };
     };
-    res.send(req.body);
+    res.send("success");
 });
 
 // on post request to status endpoint
