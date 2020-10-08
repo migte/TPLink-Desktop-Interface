@@ -21,7 +21,7 @@ router.post('/', function(req, res) {
 
         };
         
-    res.send(name)
+    res.send("success")
 });
 
 
