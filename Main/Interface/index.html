@@ -60,13 +60,13 @@
             <!--Navigation Bar-->
             <div id="settingsNavBar">
                 <ul id="settingsNavList">
-                    <li class="active settingsNavItem" onclick="changeLayout('Power')"><img style="width: 100%" src="thumbnails/power.png"></li>
-                    <li class="settingsNavItem" onclick="changeLayout('Color')"><img style="width: 100%" src="thumbnails/color.png"></li>
-                    <li class="settingsNavItem" onclick="changeLayout('Music')"><img style="width: 100%" src="thumbnails/music.png"></li>
+                    <li id="powerSettingsTab" class="active settingsNavItem" onclick="changeLayout('Power')"><img style="width: 100%" src="thumbnails/power.png"></li>
+                    <li id="colorSettingsTab" class="settingsNavItem" onclick="changeLayout('Color')"><img style="width: 100%" src="thumbnails/color.png"></li>
+                    <li id="musicSettingsTab" class="settingsNavItem" onclick="changeLayout('Music')"><img style="width: 100%" src="thumbnails/music.png"></li>
                   </ul>
             </div>
             <!--Power Settings Menu-->
-            <div class="settingsMenu" id="PowerSettingsMenu" style="display: block">
+            <div class="settingsMenu" id="powerSettings_Menu" style="display: block">
                 <p class="settingsTitle">Power</p>  
                 <label class="switch">
                     <input type="checkbox" id="powerSwitch" name="powerSwitch" onClick="powerUpdate()">
@@ -81,7 +81,7 @@
                 <br><br>
             </div>
             <!--Color Settings Menu-->
-            <div class="settingsMenu" id="ColorSettingsMenu" style="display: none">
+            <div class="settingsMenu" id="colorSettings_Menu" style="display: none">
                 <p class="settingsTitle">Color</p> <br>
                 <div class="colorSliderContainer">
                     <input type="range" min="1" max="359" value="180" class="colorSlider" id="hueSlider" oninput="colorSliderChange()">
@@ -94,7 +94,7 @@
                 <br><br>
             </div>
             <!--Music Settings Menu-->
-            <div class="settingsMenu" id="MusicSettingsMenu" style="display: none">
+            <div class="settingsMenu" id="musicSettings_Menu" style="display: none">
                 <p class="settingsTitle">Audio Visualizer</p> <br>
                 <p class="settingsSubTitle">Experience your music beyond your ears with a built in audio visualizer</p>
                 <br><br><br><br>
@@ -104,19 +104,19 @@
                         <div id="options1">
                             <span style="font-size: 30px; color: rgb(97, 255, 97); cursor: pointer; margin-left: 6px; font-weight: bold;">&#9658;</span>
                             <div style="display: inline-block;">
-                                <preset class="activePreset presetItem" style="margin-left: 25px;">
+                                <preset class="activePreset presetItem" style="margin-left: 25px;" onclick="switchMusicPresets(0)">
                                     1
                                 </preset>
-                                <preset class="presetItem" style="margin-left: 10px;">
+                                <preset class="presetItem" style="margin-left: 10px;" onclick="switchMusicPresets(1)">
                                     2
                                 </preset>
-                                <preset class="presetItem" style="margin-left: 10px;">
+                                <preset class="presetItem" style="margin-left: 10px;" onclick="switchMusicPresets(2)">
                                     3
                                 </preset>
-                                <preset class="presetItem" style="margin-left: 10px;">
+                                <preset class="presetItem" style="margin-left: 10px;" onclick="switchMusicPresets(3)">
                                     4
                                 </preset>
-                                <preset class="presetItem" style="margin-left: 10px;">
+                                <preset class="presetItem" style="margin-left: 10px;" onclick="switchMusicPresets(4)">
                                     5
                                 </preset>
                             </div>
@@ -126,12 +126,12 @@
                        <table style="overflow: auto;">
 
                             <!--Sensitivity-->
-                            <li id="presetDataItem" style="font-size: 25px;">
+                            <!-- <li id="presetDataItem" style="font-size: 25px;">
                                 <label id="presetLabel">Sensitivity:</label>
                                 <label style="font-size: 20px; margin-left: 15px;">(recommended amount is 50) </label>
                                 <input id="sensitivityInput" style="width: 40px;" type="number" max="100" min="0">
 
-                            </li>
+                            </li> -->
 
                             <!-- Brightness Range
                             <li id="presetDataItem" style="font-size: 25px;">
@@ -141,35 +141,35 @@
                                 <label style="font-size: 20px; margin-left: 15px;">max</label>
                                 <input id="brightnessInputMax" style="width: 40px;" type="number" max="100" min="0">
                             </li> -->
+                            
+                            <!--Disco Mode-->
+                            <li id="presetDataItem" style="font-size: 25px;">
+                                <label id="presetLabel" >Disco Mode:</label>
+                                <label class="container" style="display: inline-block; margin-bottom: 25px;">
+                                    <input id="discoMode" type="checkbox" oninput="musicInputChange(0)">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
 
                             <!--Color 1-->
                             <li id="presetDataItem" style="font-size: 25px;">
                                 <label id="presetLabel">Color 1:</label>
                                 <label style="font-size: 20px; margin-left: 15px;"></label>
-                                <input name="colorPicker" id="colorInput1" style="width: 40px;" type="color" value="#87ffc5">
+                                <input type="range" min="1" max="359" value="180" class="colorSliderMUSIC" id="hueSliderMusic1" oninput="musicSliderChange(1, this)">
                             </li>
 
                             <!--Color 2-->
                             <li id="presetDataItem" style="font-size: 25px;">
-                                <label id="presetLabel" >Color 2:</label>
+                                <label id="presetLabel">Color 2:</label>
                                 <label style="font-size: 20px; margin-left: 15px;"></label>
-                                <input name="colorPicker" name="colorPicker" id="colorInput2" style="width: 40px;" type="color" value="#87ffc5">
+                                <input type="range" min="1" max="359" value="180" class="colorSliderMUSIC" id="hueSliderMusic2" oninput="musicSliderChange(2, this)">
                             </li>
 
                             <!--Color 3-->
                             <li id="presetDataItem" style="font-size: 25px;">
-                                <label id="presetLabel" >Color 3:</label>
+                                <label id="presetLabel">Color 3:</label>
                                 <label style="font-size: 20px; margin-left: 15px;"></label>
-                                <input name="colorPicker" id="colorInput3" style="width: 40px;" type="color" value="#87ffc5" style="border: none;">
-                            </li>
-
-                            <!--Disco Mode-->
-                            <li id="presetDataItem" style="font-size: 25px;">
-                                <label id="presetLabel" >Disco Mode:</label>
-                                <label class="container" style="display: inline-block; margin-bottom: 25px;">
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
+                                <input type="range" min="1" max="359" value="180" class="colorSliderMUSIC" id="hueSliderMusic3" oninput="musicSliderChange(3, this)">
                             </li>
                         </table>
                     </div>

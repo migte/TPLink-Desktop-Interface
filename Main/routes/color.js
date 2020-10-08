@@ -99,8 +99,8 @@ router.post('/', function(req, res) {
             }; 
         };
     };
-    res.send(req.body);
-});
+    res.send("success");
+  });
 
 // on post request to status endpoint
 router.post('/:temp', (req, res, next) => {
@@ -148,7 +148,7 @@ router.post('/:temp', (req, res, next) => {
         }; 
     };
 };
-res.send(req.body);
+res.send("success");
 });
 
 module.exports = router;

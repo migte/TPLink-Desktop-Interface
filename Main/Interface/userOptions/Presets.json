@@ -1,0 +1,32 @@
+{
+    "preset1": {
+        "color1": 0,
+        "color2": 124,
+        "color3": 239,
+        "disco": true
+    },
+    "preset2": {
+        "color1": 0,
+        "color2": 124,
+        "color3": 239,
+        "disco": false
+    },
+    "preset3": {
+        "color1": 61,
+        "color2": 129,
+        "color3": 306,
+        "disco": false
+    },
+    "preset4": {
+        "color1": 360,
+        "color2": 319,
+        "color3": 255,
+        "disco": false
+    },
+    "preset5": {
+        "color1": 142,
+        "color2": 189,
+        "color3": 308,
+        "disco": false
+    }
+}

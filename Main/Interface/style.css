@@ -344,6 +344,45 @@ input:checked + .slider:before {
     cursor: pointer; 
   }
 
+ /* Music Sliders */
+ .colorSliderMUSIC {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 360px; 
+    height: 30px; /* Specified height */
+    outline: none; /* Remove outline */
+    opacity: 1;
+    background: -moz-linear-gradient(right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -ms-linear-gradient(right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -o-linear-gradient(right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -webkit-linear-gradient(right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    box-shadow: 0px 0px 5px black;
+    transition: box-shadow .1s;
+  }
+
+  .colorSliderMUSIC:hover {
+    box-shadow: 0px 0px 10px black;
+  }
+  
+
+  .colorSliderMUSIC::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px; 
+    height: 30px; 
+    background: rgba(0,0,0,0); 
+    border: 5px solid black;
+    cursor: pointer; 
+  }
+  
+  .colorSliderMUSIC::-moz-range-thumb {
+    width: 25px; 
+    height: 30px; 
+    background: #4CAF50;
+    cursor: pointer; 
+  }
+
   /* Brightness */
   .brightnessSlider {
     -webkit-appearance: none; 
@@ -439,7 +478,7 @@ input:checked + .slider:before {
 #MusicContainerMain {
     margin: auto;
     width: 95%;
-    height: 270px;
+    height: 235px;
     outline: 2px solid black;
 }
 

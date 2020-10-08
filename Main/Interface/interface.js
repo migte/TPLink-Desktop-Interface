@@ -7,7 +7,14 @@ var isChecked = false;
 var reloadVar;
 var SetupLoop;
 var BiggestNames = []
-var currentlyOpenMenu = "PowerSettingsMenu"
+var currentlyOpenTab = "powerSettingsTab"
+var currentlyOpenMenu = "powerSettings_Menu"
+// Music Presets
+var preset0 = []
+var preset1 = []
+var preset2 = []
+var preset3 = []
+var preset4 = []
 
 
 window.addEventListener("load", LoadAndSetup);
@@ -22,7 +29,7 @@ function reload() {
     reloadVar = setTimeout(() => {
         SetupDevices();
         reload();
-        
+        loadMusicPresets()
     }, 600);
 }
 
@@ -507,25 +514,33 @@ function customPrompt(thisVar) {
 function changeLayout(selected) {
     
     function presentChange(menu) {
-        let menuElement = document.getElementById(menu);
-        let currentElement = document.getElementById(currentlyOpenMenu);
 
-        currentElement.style.display = "none";
-        menuElement.style.display = "block"
+        let menuDiv = document.getElementById(menu);
+        let menuTab = document.getElementById(menu.split("_")[0] + "Tab");
 
+        let currentMenuTab = document.getElementById(currentlyOpenTab);
+        let currentMenuDiv = document.getElementById(currentlyOpenMenu)
+        
+        currentMenuDiv.style.display = "none";
+        currentMenuTab.className = "settingsNavItem"
+
+        menuDiv.style.display = "block";
+        menuTab.className = "active settingsNavItem"
+
+        currentlyOpenTab = menu.split("_")[0] + "Tab"
         currentlyOpenMenu = menu
     }
 
 
     switch(selected) {
         case "Power":
-            presentChange("PowerSettingsMenu");
+            presentChange("powerSettings_Menu");
             break
         case "Color":
-            presentChange("ColorSettingsMenu");
+            presentChange("colorSettings_Menu");
             break
         case "Music":
-            presentChange("MusicSettingsMenu");
+            presentChange("musicSettings_Menu");
     }
 
 }
@@ -640,4 +655,83 @@ function tempSliderChange() {
 
 function refreshPage() {
     location.reload();
+}
+
+// Audio Visualizer System
+// The idea here is that we have presets and values bound to these presets, and they should save when updated automatically
+
+function loadMusicPresets() {
+    fetch('userOptions/presets.json')
+    .then(response => response.json())
+    .then(data => {
+        let Preset1 = data.preset1;
+        let Preset2 = data.preset2;
+        let Preset3 = data.preset3;
+        let Preset4 = data.preset4;
+        let Preset5 = data.preset5;
+        let PresetArray = [Preset1, Preset2, Preset3, Preset4, Preset5];
+
+        // Stores everything into global variables
+        for (i in PresetArray) {
+            preset = PresetArray[i]
+            this["preset"+i] = preset
+        }
+    });
+}
+
+function switchMusicPresets(selected) {
+    let presetToDisplay = this["preset"+selected]
+    
+    // Get Preset Values
+    let DiscoMode = presetToDisplay.disco;
+    let color1 = presetToDisplay.color1;
+    let color2 = presetToDisplay.color2;
+    let color3 = presetToDisplay.color3;
+
+    $("input:checkbox[id=discoMode]").prop('checked', DiscoMode);
+    $("input[type=range][id=hueSliderMusic1]").prop('value', color1);
+    $("input[type=range][id=hueSliderMusic2]").prop('value', color2);
+    $("input[type=range][id=hueSliderMusic3]").prop('value', color3);
+
+    if (DiscoMode == true) {
+        let slider1 = document.getElementById("hueSliderMusic1");
+        let slider2 = document.getElementById("hueSliderMusic2");
+        let slider3 = document.getElementById("hueSliderMusic3");
+
+        // Disable and gray out
+        slider1.disabled = true;
+        slider2.disabled = true;
+        slider3.disabled = true;
+
+        slider1.style.opacity = "50%";
+        slider2.style.opacity = "50%";
+        slider3.style.opacity = "50%";
+
+    } else {
+        let slider1 = document.getElementById("hueSliderMusic1");
+        let slider2 = document.getElementById("hueSliderMusic2");
+        let slider3 = document.getElementById("hueSliderMusic3");
+
+        // Disable and gray out
+        slider1.disabled = false;
+        slider2.disabled = false;
+        slider3.disabled = false;
+
+        slider1.style.opacity = "100%";
+        slider2.style.opacity = "100%";
+        slider3.style.opacity = "100%";
+    }
+
+
+}
+
+// Sets first preset to active
+// not sure why it needs to wait. Probably something to do with loading and Jquery
+// it might be more efficient to set this to update when you click on the music tab? 
+setTimeout(() => {
+    switchMusicPresets(0)
+}, 1000);
+
+function musicSliderChange(selected, thisVal) {
+    console.log(thisVal.value)
 }
